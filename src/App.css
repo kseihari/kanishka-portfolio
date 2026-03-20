@@ -1,0 +1,53 @@
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(12px);
+}
+
+.cardGlow {
+  position: relative;
+}
+.cardGlow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  background: radial-gradient(900px 240px at 10% 10%, rgba(99, 102, 241, 0.22), transparent 60%),
+    radial-gradient(900px 240px at 90% 30%, rgba(34, 211, 238, 0.14), transparent 60%);
+  opacity: 0;
+  transition: opacity 260ms ease;
+  pointer-events: none;
+  filter: blur(0px);
+}
+.cardGlow:hover::before {
+  opacity: 1;
+}
+
+.gradientText {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(34, 211, 238, 0.90), rgba(99, 102, 241, 0.95));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ringGlow {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10), 0 0 0 6px rgba(99, 102, 241, 0.08),
+    0 0 40px rgba(99, 102, 241, 0.18);
+}
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floaty {
+  animation: floaty 7s ease-in-out infinite;
+}
