@@ -2,6 +2,7 @@ import './App.css'
 import { AnimatePresence, motion } from 'framer-motion'
 import { type FormEvent, useEffect, useMemo, useRef, useState } from 'react'
 import { Navbar } from './components/Navbar'
+import { AnimatedBackdrop } from './components/AnimatedBackdrop'
 import { ParticlesBackground } from './components/ParticlesBackground'
 import { SocialLinks } from './components/SocialLinks'
 import { FaJava } from 'react-icons/fa6'
@@ -91,6 +92,7 @@ function App() {
 
   return (
     <>
+      <AnimatedBackdrop />
       <ParticlesBackground />
       <Navbar />
 
@@ -333,9 +335,6 @@ function App() {
                 </label>
 
                 <div className="mt-6 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
-                  <p className="text-xs text-white/45">
-                    This form opens your email app (no backend yet).
-                  </p>
                   <button
                     type="submit"
                     className="ringGlow inline-flex items-center justify-center rounded-2xl bg-indigo-500/16 px-5 py-3 text-sm font-semibold text-white/90 transition hover:bg-indigo-500/22 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70"

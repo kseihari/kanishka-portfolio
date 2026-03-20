@@ -2,8 +2,8 @@
 
 /* App theme tokens (dark-first) */
 :root {
-  --bg0: #050712;
-  --bg1: #050814;
+  --bg0: #070b1f;
+  --bg1: #070c22;
   --card: rgba(255, 255, 255, 0.04);
   --card2: rgba(255, 255, 255, 0.06);
   --stroke: rgba(255, 255, 255, 0.10);
@@ -23,9 +23,9 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(1000px 600px at 20% 10%, rgba(99, 102, 241, 0.18), transparent 60%),
-    radial-gradient(900px 500px at 80% 20%, rgba(34, 211, 238, 0.10), transparent 55%),
-    radial-gradient(900px 600px at 50% 90%, rgba(168, 85, 247, 0.10), transparent 60%),
+    radial-gradient(1000px 600px at 20% 10%, rgba(99, 102, 241, 0.38), transparent 60%),
+    radial-gradient(900px 500px at 80% 20%, rgba(34, 211, 238, 0.24), transparent 55%),
+    radial-gradient(900px 600px at 50% 90%, rgba(168, 85, 247, 0.21), transparent 60%),
     linear-gradient(180deg, var(--bg0), #02040c 55%, var(--bg1));
   color: var(--text);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
@@ -52,4 +52,86 @@ body {
   border-radius: 999px;
   border: 2px solid transparent;
   background-clip: padding-box;
+}
+
+/* Extra subtle animated backdrop (behind particles/content) */
+.animated-orbs {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 320px at 15% 10%, rgba(99, 102, 241, 0.42), transparent 60%),
+    radial-gradient(620px 300px at 85% 20%, rgba(34, 211, 238, 0.32), transparent 55%),
+    radial-gradient(720px 380px at 55% 92%, rgba(74, 222, 128, 0.22), transparent 60%),
+    radial-gradient(720px 380px at 55% 92%, rgba(168, 85, 247, 0.20), transparent 65%);
+  animation: orbsFloat 7s ease-in-out infinite;
+  opacity: 1;
+}
+
+.animated-grid {
+  position: absolute;
+  inset: -2px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.11) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.11) 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(900px) rotateX(55deg) translateY(18vh);
+  transform-origin: center;
+  opacity: 0.52;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.0) 70%);
+  animation: gridDrift 10s linear infinite;
+}
+
+.animated-scanlines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.08) 1px,
+    transparent 2px,
+    transparent 6px
+  );
+  opacity: 0.36;
+  animation: scanMove 4s linear infinite;
+}
+
+.animated-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 800px at 50% 40%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+  opacity: 0.55;
+}
+
+@keyframes orbsFloat {
+  0% {
+    transform: translate3d(0px, 0px, 0px) scale(1);
+    filter: blur(0px);
+  }
+  50% {
+    transform: translate3d(-52px, 50px, 0px) scale(1.05);
+    filter: blur(0.55px);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0px) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes gridDrift {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 640px 640px;
+  }
+}
+
+@keyframes scanMove {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(110px);
+  }
 }
